@@ -87,23 +87,6 @@
       }
     },
     {
-      "id": "neighborhoods-label",
-      "type": "symbol",
-      "source": "nyc_neighborhoods",
-      "source-layer": "nyc_neighborhoods",
-      "minzoom": 11,
-      "layout": {
-        "text-field": ["get", "name"],
-        "text-size": 11,
-        "text-max-width": 8
-      },
-      "paint": {
-        "text-color": "#996600",
-        "text-halo-color": "#ffffff",
-        "text-halo-width": 1.5
-      }
-    },
-    {
       "id": "streets-line",
       "type": "line",
       "source": "nyc_streets",
@@ -125,24 +108,6 @@
         "circle-radius": ["interpolate", ["linear"], ["zoom"], 10, 3, 14, 6],
         "circle-stroke-color": "#ffffff",
         "circle-stroke-width": 1
-      }
-    },
-    {
-      "id": "subway-stations-label",
-      "type": "symbol",
-      "source": "nyc_subway_stations",
-      "source-layer": "nyc_subway_stations",
-      "minzoom": 13,
-      "layout": {
-        "text-field": ["get", "name"],
-        "text-size": 10,
-        "text-offset": [0, 1.2],
-        "text-anchor": "top"
-      },
-      "paint": {
-        "text-color": "#cc4400",
-        "text-halo-color": "#ffffff",
-        "text-halo-width": 1.5
       }
     },
     {
