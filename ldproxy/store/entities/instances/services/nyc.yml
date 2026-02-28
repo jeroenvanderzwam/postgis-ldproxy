@@ -47,14 +47,12 @@ api:
     styleEncodings:
       - Mapbox
       - HTML
-    deriveCollectionStyles: true
     webmapWithPopup: true
   - buildingBlock: HTML
     enabled: true
     noIndexEnabled: true
     sendEtags: true
     mapClient: MAP_LIBRE
-    defaultStyle: nyc
 collections:
   nyc_census_blocks:
     id: nyc_census_blocks
