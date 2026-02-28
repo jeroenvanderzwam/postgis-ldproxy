@@ -1,0 +1,129 @@
+---
+id: nyc
+entityStorageVersion: 2
+serviceType: OGC_API
+label: NYC PostGIS Tutorial Data
+description: NYC spatial data from the PostGIS workbook by Qiusheng Wu — census
+  blocks, neighborhoods, streets, subway stations and homicides.
+enabled: true
+api:
+  - buildingBlock: OGC_API
+    metadata:
+      contactName: PostGIS Tutorial
+      contactUrl: https://postgis.gishub.org
+  - buildingBlock: COLLECTIONS
+  - buildingBlock: FEATURES_CORE
+    defaultCrs: CRS84
+    minimumPageSize: 1
+    defaultPageSize: 10
+    maximumPageSize: 1000
+  - buildingBlock: FILTER
+    enabled: true
+    filterLanguages:
+      - CQL2_TEXT
+      - CQL2_JSON
+  - buildingBlock: PROJECTIONS
+    enabled: true
+  - buildingBlock: SCHEMA
+    enabled: true
+  - buildingBlock: QUERYABLES
+    enabled: true
+    included:
+      - '*'
+  - buildingBlock: CRS
+    enabled: true
+    additionalCrs:
+      - code: 4326
+        forceAxisOrder: LON_LAT
+      - code: 3857
+        forceAxisOrder: NONE
+  - buildingBlock: HTML
+    enabled: true
+    noIndexEnabled: true
+    sendEtags: true
+    mapClient: OPEN_LAYERS
+collections:
+  nyc_census_blocks:
+    id: nyc_census_blocks
+    label: NYC Census Blocks
+    description: The smallest geography for which census data is reported. Contains
+      demographic population breakdowns by race across New York City's 38,794 census
+      blocks.
+    enabled: true
+    api:
+      - buildingBlock: FEATURES_CORE
+        queryables:
+          spatial:
+            - geometry
+          other:
+            - blkid
+            - boroname
+            - popn_total
+            - popn_white
+            - popn_black
+            - popn_nativ
+            - popn_asian
+            - popn_other
+  nyc_neighborhoods:
+    id: nyc_neighborhoods
+    label: NYC Neighborhoods
+    description: Named neighborhood boundaries across New York City's five boroughs,
+      covering 129 neighborhoods.
+    enabled: true
+    api:
+      - buildingBlock: FEATURES_CORE
+        queryables:
+          spatial:
+            - geometry
+          other:
+            - name
+            - boroname
+  nyc_streets:
+    id: nyc_streets
+    label: NYC Streets
+    description: Street centerlines representing New York City's transportation network
+      of 19,091 streets, classified by type.
+    enabled: true
+    api:
+      - buildingBlock: FEATURES_CORE
+        queryables:
+          spatial:
+            - geometry
+          other:
+            - name
+            - type
+            - oneway
+  nyc_subway_stations:
+    id: nyc_subway_stations
+    label: NYC Subway Stations
+    description: The 491 subway station portals across New York City's public transit
+      network.
+    enabled: true
+    api:
+      - buildingBlock: FEATURES_CORE
+        queryables:
+          spatial:
+            - geometry
+          other:
+            - name
+            - borough
+            - routes
+            - express
+            - closed
+  nyc_homicides:
+    id: nyc_homicides
+    label: NYC Homicides
+    description: Homicide incident locations in New York City with date, borough,
+      weapon, and circumstance information.
+    enabled: true
+    api:
+      - buildingBlock: FEATURES_CORE
+        queryables:
+          spatial:
+            - geometry
+          temporal:
+            - incident_d
+          other:
+            - boroname
+            - weapon
+            - year

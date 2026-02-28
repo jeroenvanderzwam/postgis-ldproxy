@@ -1,0 +1,10 @@
+store:
+  sources:
+    - type: FS
+      src: store
+logging:
+  level: 'OFF'
+  appenders:
+    - type: console
+  loggers:
+    de.ii: DEBUG

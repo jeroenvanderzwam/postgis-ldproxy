@@ -1,0 +1,86 @@
+@baseUrl = http://localhost:7080/nyc
+
+# CQL2 attribute filters using filter-lang=cql2-text
+# Docs: https://docs.ogc.org/is/21-065r2/21-065r2.html
+
+### Neighborhoods in Brooklyn
+GET {{baseUrl}}/collections/nyc_neighborhoods/items?f=json
+  &filter=boroname='Brooklyn'
+  &filter-lang=cql2-text
+
+###
+
+### Neighborhoods in Manhattan
+GET {{baseUrl}}/collections/nyc_neighborhoods/items?f=json
+  &filter=boroname='Manhattan'
+  &filter-lang=cql2-text
+
+###
+
+### Census blocks in Queens with population > 5000
+GET {{baseUrl}}/collections/nyc_census_blocks/items?f=json&limit=20
+  &filter=boroname='Queens' AND popn_total>5000
+  &filter-lang=cql2-text
+
+###
+
+### Census blocks where white population > black population
+GET {{baseUrl}}/collections/nyc_census_blocks/items?f=json&limit=10
+  &filter=popn_white>popn_black
+  &filter-lang=cql2-text
+
+###
+
+### Streets of type 'primary'
+GET {{baseUrl}}/collections/nyc_streets/items?f=json&limit=20
+  &filter=type='primary'
+  &filter-lang=cql2-text
+
+###
+
+### Streets that are one-way
+GET {{baseUrl}}/collections/nyc_streets/items?f=json&limit=20
+  &filter=oneway='yes'
+  &filter-lang=cql2-text
+
+###
+
+### Subway stations serving the A train
+GET {{baseUrl}}/collections/nyc_subway_stations/items?f=json
+  &filter=routes LIKE '%A%'
+  &filter-lang=cql2-text
+
+###
+
+### Subway stations in the Bronx
+GET {{baseUrl}}/collections/nyc_subway_stations/items?f=json
+  &filter=borough='Bronx'
+  &filter-lang=cql2-text
+
+###
+
+### Homicides by gun
+GET {{baseUrl}}/collections/nyc_homicides/items?f=json&limit=20
+  &filter=weapon='gun'
+  &filter-lang=cql2-text
+
+###
+
+### Homicides in Brooklyn by knife
+GET {{baseUrl}}/collections/nyc_homicides/items?f=json&limit=20
+  &filter=boroname='Brooklyn' AND weapon='knife'
+  &filter-lang=cql2-text
+
+###
+
+### Homicides in 2009
+GET {{baseUrl}}/collections/nyc_homicides/items?f=json&limit=50
+  &filter=year=2009
+  &filter-lang=cql2-text
+
+###
+
+### Homicides filtered by date range (temporal)
+GET {{baseUrl}}/collections/nyc_homicides/items?f=json&limit=20
+  &filter=incident_d >= DATE('2009-01-01') AND incident_d <= DATE('2009-06-30')
+  &filter-lang=cql2-text

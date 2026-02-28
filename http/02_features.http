@@ -1,0 +1,54 @@
+@baseUrl = http://localhost:7080/nyc
+
+### Neighborhoods — first page
+GET {{baseUrl}}/collections/nyc_neighborhoods/items?f=json&limit=10
+
+###
+
+### Neighborhoods — second page
+GET {{baseUrl}}/collections/nyc_neighborhoods/items?f=json&limit=10&offset=10
+
+###
+
+### Census blocks — first 5
+GET {{baseUrl}}/collections/nyc_census_blocks/items?f=json&limit=5
+
+###
+
+### Streets — first 10
+GET {{baseUrl}}/collections/nyc_streets/items?f=json&limit=10
+
+###
+
+### Subway stations — all (491 total)
+GET {{baseUrl}}/collections/nyc_subway_stations/items?f=json&limit=500
+
+###
+
+### Homicides — first 10
+GET {{baseUrl}}/collections/nyc_homicides/items?f=json&limit=10
+
+###
+
+### Single feature by id — neighborhood 1
+GET {{baseUrl}}/collections/nyc_neighborhoods/items/1?f=json
+
+###
+
+### Single feature by id — census block 100
+GET {{baseUrl}}/collections/nyc_census_blocks/items/100?f=json
+
+###
+
+### Features in WGS84 (default)
+GET {{baseUrl}}/collections/nyc_neighborhoods/items?f=json&limit=5&crs=http://www.opengis.net/def/crs/OGC/1.3/CRS84
+
+###
+
+### Features in Web Mercator (EPSG:3857)
+GET {{baseUrl}}/collections/nyc_neighborhoods/items?f=json&limit=5&crs=http://www.opengis.net/def/crs/EPSG/0/3857
+
+###
+
+### Features in native UTM Zone 18N (EPSG:26918)
+GET {{baseUrl}}/collections/nyc_neighborhoods/items?f=json&limit=5&crs=http://www.opengis.net/def/crs/EPSG/0/26918

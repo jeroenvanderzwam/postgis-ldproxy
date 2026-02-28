@@ -1,0 +1,7 @@
+# ldproxy runtime files
+ldproxy/tmp/
+ldproxy/resources/
+ldproxy/store/resources/
+
+# Claude Code session files
+.claude/

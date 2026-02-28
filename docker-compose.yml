@@ -1,0 +1,30 @@
+services:
+  postgis:
+    build: ./postgis
+    environment:
+      POSTGRES_DB: nyc
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./initdb:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d nyc"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  ldproxy:
+    image: iide/ldproxy:latest
+    ports:
+      - "7080:7080"
+    volumes:
+      - ./ldproxy:/ldproxy/data
+    environment:
+      DB_HOST: postgis
+    depends_on:
+      postgis:
+        condition: service_healthy
+
+volumes:
+  pgdata:

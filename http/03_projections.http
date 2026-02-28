@@ -1,0 +1,39 @@
+@baseUrl = http://localhost:7080/nyc
+
+### Schema — what properties exist for neighborhoods
+GET {{baseUrl}}/collections/nyc_neighborhoods/schema?f=json
+
+###
+
+### Queryables — what properties can be filtered on
+GET {{baseUrl}}/collections/nyc_neighborhoods/queryables?f=json
+
+###
+
+### Queryables — census blocks
+GET {{baseUrl}}/collections/nyc_census_blocks/queryables?f=json
+
+###
+
+### Queryables — homicides (includes temporal)
+GET {{baseUrl}}/collections/nyc_homicides/queryables?f=json
+
+###
+
+### Neighborhoods — only name and borough
+GET {{baseUrl}}/collections/nyc_neighborhoods/items?f=json&limit=10&properties=name,boroname
+
+###
+
+### Census blocks — only population totals (no geometry breakdown)
+GET {{baseUrl}}/collections/nyc_census_blocks/items?f=json&limit=5&properties=blkid,boroname,popn_total
+
+###
+
+### Subway stations — only name and routes
+GET {{baseUrl}}/collections/nyc_subway_stations/items?f=json&limit=20&properties=name,routes,borough
+
+###
+
+### Homicides — only date, weapon, borough
+GET {{baseUrl}}/collections/nyc_homicides/items?f=json&limit=10&properties=incident_d,weapon,boroname

@@ -1,0 +1,225 @@
+---
+id: nyc
+entityStorageVersion: 2
+providerType: FEATURE
+providerSubType: SQL
+connectionInfo:
+  dialect: PGIS
+  host: ${DB_HOST:-postgis}
+  database: nyc
+  user: postgres
+  password: cG9zdGdyZXM=
+sourcePathDefaults:
+  primaryKey: gid
+  sortKey: gid
+nativeCrs:
+  code: 26918
+  forceAxisOrder: NONE
+auto: false
+types:
+  nyc_census_blocks:
+    label: NYC Census Blocks
+    description: The smallest geography for which census data is reported. Contains
+      demographic population breakdowns by race across New York City's 38,794 census
+      blocks.
+    sourcePath: /nyc_census_blocks
+    type: OBJECT
+    properties:
+      gid:
+        sourcePath: gid
+        type: INTEGER
+        role: ID
+      blkid:
+        sourcePath: blkid
+        type: STRING
+        label: Census Block ID
+      popn_total:
+        sourcePath: popn_total
+        type: FLOAT
+        label: Total Population
+      popn_white:
+        sourcePath: popn_white
+        type: FLOAT
+        label: White Population
+      popn_black:
+        sourcePath: popn_black
+        type: FLOAT
+        label: Black Population
+      popn_nativ:
+        sourcePath: popn_nativ
+        type: FLOAT
+        label: Native Population
+      popn_asian:
+        sourcePath: popn_asian
+        type: FLOAT
+        label: Asian Population
+      popn_other:
+        sourcePath: popn_other
+        type: FLOAT
+        label: Other Population
+      boroname:
+        sourcePath: boroname
+        type: STRING
+        label: Borough
+      geometry:
+        sourcePath: geom
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: MULTI_POLYGON
+  nyc_neighborhoods:
+    label: NYC Neighborhoods
+    description: Named neighborhood boundaries across New York City's five boroughs,
+      covering 129 neighborhoods.
+    sourcePath: /nyc_neighborhoods
+    type: OBJECT
+    properties:
+      gid:
+        sourcePath: gid
+        type: INTEGER
+        role: ID
+      boroname:
+        sourcePath: boroname
+        type: STRING
+        label: Borough
+      name:
+        sourcePath: name
+        type: STRING
+        label: Neighborhood Name
+      geometry:
+        sourcePath: geom
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: MULTI_POLYGON
+  nyc_streets:
+    label: NYC Streets
+    description: Street centerlines representing New York City's transportation network
+      of 19,091 streets, classified by type.
+    sourcePath: /nyc_streets
+    type: OBJECT
+    properties:
+      gid:
+        sourcePath: gid
+        type: INTEGER
+        role: ID
+      name:
+        sourcePath: name
+        type: STRING
+        label: Street Name
+      oneway:
+        sourcePath: oneway
+        type: STRING
+        label: One Way
+      type:
+        sourcePath: type
+        type: STRING
+        label: Street Type
+      geometry:
+        sourcePath: geom
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: MULTI_LINE_STRING
+  nyc_subway_stations:
+    label: NYC Subway Stations
+    description: The 491 subway station portals across New York City's public transit
+      network.
+    sourcePath: /nyc_subway_stations
+    type: OBJECT
+    properties:
+      gid:
+        sourcePath: gid
+        type: INTEGER
+        role: ID
+      name:
+        sourcePath: name
+        type: STRING
+        label: Station Name
+      alt_name:
+        sourcePath: alt_name
+        type: STRING
+        label: Alternate Name
+      cross_st:
+        sourcePath: cross_st
+        type: STRING
+        label: Cross Street
+      long_name:
+        sourcePath: long_name
+        type: STRING
+        label: Long Name
+      borough:
+        sourcePath: borough
+        type: STRING
+        label: Borough
+      nghbhd:
+        sourcePath: nghbhd
+        type: STRING
+        label: Neighborhood
+      routes:
+        sourcePath: routes
+        type: STRING
+        label: Routes
+      transfers:
+        sourcePath: transfers
+        type: STRING
+        label: Transfers
+      color:
+        sourcePath: color
+        type: STRING
+        label: Color
+      express:
+        sourcePath: express
+        type: STRING
+        label: Express
+      closed:
+        sourcePath: closed
+        type: STRING
+        label: Closed
+      geometry:
+        sourcePath: geom
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: POINT
+  nyc_homicides:
+    label: NYC Homicides
+    description: Homicide incident locations in New York City with date, borough,
+      weapon, and circumstance information.
+    sourcePath: /nyc_homicides
+    type: OBJECT
+    properties:
+      gid:
+        sourcePath: gid
+        type: INTEGER
+        role: ID
+      incident_d:
+        sourcePath: incident_d
+        type: DATE
+        role: PRIMARY_INSTANT
+        label: Incident Date
+      boroname:
+        sourcePath: boroname
+        type: STRING
+        label: Borough
+      num_victim:
+        sourcePath: num_victim
+        type: STRING
+        label: Number of Victims
+      primary_mo:
+        sourcePath: primary_mo
+        type: STRING
+        label: Primary Motive
+      weapon:
+        sourcePath: weapon
+        type: STRING
+        label: Weapon
+      light_dark:
+        sourcePath: light_dark
+        type: STRING
+        label: Light or Dark
+      year:
+        sourcePath: year
+        type: FLOAT
+        label: Year
+      geometry:
+        sourcePath: geom
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: POINT

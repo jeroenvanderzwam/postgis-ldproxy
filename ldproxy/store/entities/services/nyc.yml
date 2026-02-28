@@ -1,0 +1,40 @@
+---
+id: nyc
+entityStorageVersion: 2
+serviceType: OGC_API
+label: NYC PostGIS Tutorial Data
+description: NYC spatial data from the PostGIS tutorial — census blocks, neighborhoods, streets, subway stations and homicides.
+enabled: true
+api:
+  - buildingBlock: OGC_API
+    metadata:
+      contactName: PostGIS Tutorial
+      contactUrl: https://postgis.gishub.org
+  - buildingBlock: COLLECTIONS
+  - buildingBlock: FEATURES_CORE
+    defaultCrs: CRS84
+    minimumPageSize: 1
+    defaultPageSize: 10
+    maximumPageSize: 1000
+  - buildingBlock: FILTER
+    enabled: true
+    filterLanguages:
+      - CQL2_TEXT
+      - CQL2_JSON
+  - buildingBlock: SCHEMA
+    enabled: true
+  - buildingBlock: QUERYABLES
+    enabled: true
+  - buildingBlock: CRS
+    enabled: true
+    additionalCrs:
+      - code: 4326
+        forceAxisOrder: LON_LAT
+      - code: 3857
+        forceAxisOrder: NONE
+  - buildingBlock: HTML
+    enabled: true
+    noIndexEnabled: true
+    sendEtags: true
+providers:
+  - id: nyc

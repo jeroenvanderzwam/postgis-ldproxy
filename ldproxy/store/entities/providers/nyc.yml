@@ -1,0 +1,17 @@
+---
+id: nyc
+entityStorageVersion: 2
+providerType: FEATURE
+providerSubType: SQL
+connectionInfo:
+  dialect: PGIS
+  host: ${DB_HOST:-postgis}
+  database: nyc
+  user: postgres
+  password: cG9zdGdyZXM=
+sourcePathDefaults:
+  primaryKey: gid
+nativeCrs:
+  code: 26918
+  forceAxisOrder: NONE
+auto: true

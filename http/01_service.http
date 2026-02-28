@@ -1,0 +1,49 @@
+@baseUrl = http://localhost:7080/nyc
+
+### Landing page (JSON)
+GET {{baseUrl}}?f=json
+
+###
+
+### Landing page (HTML)
+GET {{baseUrl}}?f=html
+
+###
+
+### Conformance classes
+GET {{baseUrl}}/conformance?f=json
+
+###
+
+### OpenAPI definition
+GET {{baseUrl}}/api?f=json
+
+###
+
+### All collections
+GET {{baseUrl}}/collections?f=json
+
+###
+
+### Single collection — neighborhoods
+GET {{baseUrl}}/collections/nyc_neighborhoods?f=json
+
+###
+
+### Single collection — census blocks
+GET {{baseUrl}}/collections/nyc_census_blocks?f=json
+
+###
+
+### Single collection — streets
+GET {{baseUrl}}/collections/nyc_streets?f=json
+
+###
+
+### Single collection — subway stations
+GET {{baseUrl}}/collections/nyc_subway_stations?f=json
+
+###
+
+### Single collection — homicides
+GET {{baseUrl}}/collections/nyc_homicides?f=json
