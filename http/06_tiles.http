@@ -1,0 +1,71 @@
+@baseUrl = http://localhost:7080/nyc
+
+# Tile coordinates used below are for central NYC (approx. 40.71°N, 74.01°W)
+# WebMercatorQuad:  z=10 → 10/384/301   z=12 → 12/1538/1206   z=14 → 14/6155/4826
+
+### Available tiling schemes (dataset level)
+GET {{baseUrl}}/tiling-schemes?f=json
+
+###
+
+### Dataset tile matrix sets (which tiling schemes are enabled)
+GET {{baseUrl}}/tiles?f=json
+
+###
+
+### Dataset multi-collection tile — zoom 10 (all collections)
+GET {{baseUrl}}/tiles/WebMercatorQuad/10/384/301?f=mvt
+
+###
+
+### Dataset multi-collection tile — zoom 12
+GET {{baseUrl}}/tiles/WebMercatorQuad/12/1538/1206?f=mvt
+
+###
+
+# --- Per-collection tiles ---
+
+### Subway stations — tile matrix sets
+GET {{baseUrl}}/collections/nyc_subway_stations/tiles?f=json
+
+###
+
+### Subway stations — tile z=12 (point data, fast)
+GET {{baseUrl}}/collections/nyc_subway_stations/tiles/WebMercatorQuad/12/1538/1206?f=mvt
+
+###
+
+### Subway stations — tile z=14 (street level)
+GET {{baseUrl}}/collections/nyc_subway_stations/tiles/WebMercatorQuad/14/6155/4826?f=mvt
+
+###
+
+### Neighborhoods — tile z=10
+GET {{baseUrl}}/collections/nyc_neighborhoods/tiles/WebMercatorQuad/10/384/301?f=mvt
+
+###
+
+### Neighborhoods — tile z=12
+GET {{baseUrl}}/collections/nyc_neighborhoods/tiles/WebMercatorQuad/12/1538/1206?f=mvt
+
+###
+
+### Streets — tile z=12
+GET {{baseUrl}}/collections/nyc_streets/tiles/WebMercatorQuad/12/1538/1206?f=mvt
+
+###
+
+### Streets — tile z=14 (most detail)
+GET {{baseUrl}}/collections/nyc_streets/tiles/WebMercatorQuad/14/6155/4826?f=mvt
+
+###
+
+### Census blocks — tile z=12
+GET {{baseUrl}}/collections/nyc_census_blocks/tiles/WebMercatorQuad/12/1538/1206?f=mvt
+
+###
+
+### Homicides — tile z=12
+GET {{baseUrl}}/collections/nyc_homicides/tiles/WebMercatorQuad/12/1538/1206?f=mvt
+
+###

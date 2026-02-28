@@ -37,11 +37,16 @@ api:
         forceAxisOrder: LON_LAT
       - code: 3857
         forceAxisOrder: NONE
+  - buildingBlock: TILES
+    enabled: true
+    cache: FILES
+    tileProvider: nyc-tiles
+    tileProviderTileset: all
   - buildingBlock: HTML
     enabled: true
     noIndexEnabled: true
     sendEtags: true
-    mapClient: OPEN_LAYERS
+    mapClient: MAP_LIBRE
 collections:
   nyc_census_blocks:
     id: nyc_census_blocks

@@ -1,0 +1,29 @@
+---
+id: nyc-tiles
+providerType: TILE
+providerSubType: FEATURES
+featureProvider: nyc
+tilesetDefaults:
+  levels:
+    WebMercatorQuad:
+      min: 8
+      max: 16
+tilesets:
+  nyc_census_blocks:
+    id: nyc_census_blocks
+  nyc_neighborhoods:
+    id: nyc_neighborhoods
+  nyc_streets:
+    id: nyc_streets
+  nyc_subway_stations:
+    id: nyc_subway_stations
+  nyc_homicides:
+    id: nyc_homicides
+  all:
+    id: all
+    combine:
+      - nyc_census_blocks
+      - nyc_neighborhoods
+      - nyc_streets
+      - nyc_subway_stations
+      - nyc_homicides
