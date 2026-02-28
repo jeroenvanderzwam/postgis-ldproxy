@@ -1,0 +1,162 @@
+{
+  "version": 8,
+  "name": "NYC PostGIS Data",
+  "center": [-74.006, 40.7128],
+  "zoom": 11,
+  "sources": {
+    "osm": {
+      "type": "raster",
+      "tiles": ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],
+      "tileSize": 256,
+      "attribution": "© <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
+    },
+    "nyc_census_blocks": {
+      "type": "vector",
+      "tiles": ["{serviceUrl}/collections/nyc_census_blocks/tiles/WebMercatorQuad/{z}/{y}/{x}?f=mvt"],
+      "maxzoom": 16
+    },
+    "nyc_neighborhoods": {
+      "type": "vector",
+      "tiles": ["{serviceUrl}/collections/nyc_neighborhoods/tiles/WebMercatorQuad/{z}/{y}/{x}?f=mvt"],
+      "maxzoom": 16
+    },
+    "nyc_streets": {
+      "type": "vector",
+      "tiles": ["{serviceUrl}/collections/nyc_streets/tiles/WebMercatorQuad/{z}/{y}/{x}?f=mvt"],
+      "maxzoom": 16
+    },
+    "nyc_subway_stations": {
+      "type": "vector",
+      "tiles": ["{serviceUrl}/collections/nyc_subway_stations/tiles/WebMercatorQuad/{z}/{y}/{x}?f=mvt"],
+      "maxzoom": 16
+    },
+    "nyc_homicides": {
+      "type": "vector",
+      "tiles": ["{serviceUrl}/collections/nyc_homicides/tiles/WebMercatorQuad/{z}/{y}/{x}?f=mvt"],
+      "maxzoom": 16
+    }
+  },
+  "layers": [
+    {
+      "id": "osm-background",
+      "type": "raster",
+      "source": "osm",
+      "paint": { "raster-opacity": 0.6 }
+    },
+    {
+      "id": "census-blocks-fill",
+      "type": "fill",
+      "source": "nyc_census_blocks",
+      "source-layer": "nyc_census_blocks",
+      "minzoom": 12,
+      "paint": {
+        "fill-color": "#a8c8f0",
+        "fill-opacity": 0.25
+      }
+    },
+    {
+      "id": "census-blocks-line",
+      "type": "line",
+      "source": "nyc_census_blocks",
+      "source-layer": "nyc_census_blocks",
+      "minzoom": 12,
+      "paint": {
+        "line-color": "#6699cc",
+        "line-width": 0.5,
+        "line-opacity": 0.6
+      }
+    },
+    {
+      "id": "neighborhoods-fill",
+      "type": "fill",
+      "source": "nyc_neighborhoods",
+      "source-layer": "nyc_neighborhoods",
+      "paint": {
+        "fill-color": "#ffd700",
+        "fill-opacity": 0.08
+      }
+    },
+    {
+      "id": "neighborhoods-line",
+      "type": "line",
+      "source": "nyc_neighborhoods",
+      "source-layer": "nyc_neighborhoods",
+      "paint": {
+        "line-color": "#cc9900",
+        "line-width": 1.5
+      }
+    },
+    {
+      "id": "neighborhoods-label",
+      "type": "symbol",
+      "source": "nyc_neighborhoods",
+      "source-layer": "nyc_neighborhoods",
+      "minzoom": 11,
+      "layout": {
+        "text-field": ["get", "name"],
+        "text-size": 11,
+        "text-max-width": 8
+      },
+      "paint": {
+        "text-color": "#996600",
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1.5
+      }
+    },
+    {
+      "id": "streets-line",
+      "type": "line",
+      "source": "nyc_streets",
+      "source-layer": "nyc_streets",
+      "minzoom": 11,
+      "paint": {
+        "line-color": "#999999",
+        "line-width": ["interpolate", ["linear"], ["zoom"], 11, 0.5, 14, 1.5]
+      }
+    },
+    {
+      "id": "subway-stations-circle",
+      "type": "circle",
+      "source": "nyc_subway_stations",
+      "source-layer": "nyc_subway_stations",
+      "minzoom": 10,
+      "paint": {
+        "circle-color": "#ff6600",
+        "circle-radius": ["interpolate", ["linear"], ["zoom"], 10, 3, 14, 6],
+        "circle-stroke-color": "#ffffff",
+        "circle-stroke-width": 1
+      }
+    },
+    {
+      "id": "subway-stations-label",
+      "type": "symbol",
+      "source": "nyc_subway_stations",
+      "source-layer": "nyc_subway_stations",
+      "minzoom": 13,
+      "layout": {
+        "text-field": ["get", "name"],
+        "text-size": 10,
+        "text-offset": [0, 1.2],
+        "text-anchor": "top"
+      },
+      "paint": {
+        "text-color": "#cc4400",
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1.5
+      }
+    },
+    {
+      "id": "homicides-circle",
+      "type": "circle",
+      "source": "nyc_homicides",
+      "source-layer": "nyc_homicides",
+      "minzoom": 10,
+      "paint": {
+        "circle-color": "#cc0000",
+        "circle-radius": ["interpolate", ["linear"], ["zoom"], 10, 3, 14, 5],
+        "circle-stroke-color": "#ffffff",
+        "circle-stroke-width": 1
+      }
+    }
+  ]
+}
